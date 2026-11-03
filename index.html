@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>박규리 | 웹 명함 (Digital Business Card)</title>
+  
+  <!-- SEO & 메타 태그 -->
+  <meta name="description" content="글로벌경영학과 박규리의 디지털 인터랙티브 웹 명함입니다.">
+  <meta property="og:title" content="박규리 | 웹 명함">
+  <meta property="og:description" content="글로벌 비즈니스로 세상을 잇는 인재, 박규리입니다.">
+  <meta property="og:type" content="website">
+
+  <!-- 폰트 (Pretendard) & 아이콘 (Font Awesome) -->
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  
+  <!-- 스타일시트 -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- QR 코드 라이브러리 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+  <!-- 배경 장식용 블러 오브 -->
+  <div class="bg-shape shape-1"></div>
+  <div class="bg-shape shape-2"></div>
+  <div class="bg-shape shape-3"></div>
+
+  <!-- 상단 컨트롤 (테마 토글) -->
+  <div class="top-controls">
+    <button id="themeToggle" class="control-btn" title="다크/라이트 모드 전환" aria-label="테마 전환">
+      <i class="fa-solid fa-moon"></i>
+    </button>
+  </div>
+
+  <main class="card-container">
+    <div class="card" id="businessCard">
+      <!-- 카드 뱃지 / 상단 헤더 -->
+      <div class="card-header">
+        <span class="status-badge">
+          <span class="status-dot"></span> OPEN TO WORK & NETWORK
+        </span>
+        <button id="qrBtn" class="icon-btn" title="QR 코드 보기" aria-label="QR 코드 보기">
+          <i class="fa-solid fa-qrcode"></i>
+        </button>
+      </div>
+
+      <!-- 캐릭터 아바타 영역 (인터랙티브 SVG) -->
+      <div class="avatar-wrapper">
+        <div class="avatar-ring"></div>
+        <div class="avatar-svg-container">
+          <svg class="character-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <!-- 화사하고 화사한 파스텔 톤 배경 그라디언트 -->
+              <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#FFF1F2" />
+                <stop offset="50%" stop-color="#F5F3FF" />
+                <stop offset="100%" stop-color="#E0F2FE" />
+              </linearGradient>
+              <!-- 맑고 화사한 뽀얀 피치 피부톤 그라디언트 -->
+              <linearGradient id="skinGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#FFFDF9" />
+                <stop offset="100%" stop-color="#FFE7DC" />
+              </linearGradient>
+              <!-- 세련된 다크초코 브라운 헤어 그라디언트 -->
+              <linearGradient id="hairGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#3D2E28" />
+                <stop offset="100%" stop-color="#221915" />
+              </linearGradient>
+              <!-- 볼륨감 있는 헤어 하이라이트 그라디언트 -->
+              <linearGradient id="hairHighlight" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#5C453C" />
+                <stop offset="100%" stop-color="#3D2E28" />
+              </linearGradient>
+              <!-- 재킷 그라디언트 -->
+              <linearGradient id="jacketGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#3182CE" />
+                <stop offset="100%" stop-color="#1A365D" />
+              </linearGradient>
+              <!-- 셔츠 그라디언트 -->
+              <linearGradient id="shirtGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#FFFFFF" />
+                <stop offset="100%" stop-color="#F1F5F9" />
+              </linearGradient>
+              <!-- 맑은 코랄 핑크 립 그라디언트 -->
+              <linearGradient id="lipGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#FB7185" />
+                <stop offset="100%" stop-color="#E11D48" />
+              </linearGradient>
+            </defs>
+
+            <!-- 화사한 원형 배경 -->
+            <circle cx="100" cy="100" r="92" fill="url(#bgGrad)" />
+
+            <!-- 캐릭터 풍성한 뒷머리 (세련된 긴 헤어) -->
+            <path d="M48 95 C46 145 58 178 72 185 L128 185 C142 178 154 145 152 95 C152 46 138 35 100 35 C62 35 48 46 48 95 Z" fill="url(#hairGrad)" />
+
+            <!-- 몸체 (어깨 및 옷) -->
+            <g class="clothes">
+              <!-- 목 -->
+              <rect x="88" y="125" width="24" height="28" rx="6" fill="url(#skinGrad)" />
+              <!-- 이너 셔츠 (깔끔한 브이넥 셔츠) -->
+              <path d="M72 150 L100 178 L128 150 L140 200 L60 200 Z" fill="url(#shirtGrad)" />
+              <!-- 셔츠 칼라 -->
+              <polygon points="100,165 82,145 96,145" fill="#E2E8F0" />
+              <polygon points="100,165 118,145 104,145" fill="#E2E8F0" />
+              
+              <!-- 네이비 정장 자켓 -->
+              <path d="M48 200 C50 160 68 146 82 145 L100 176 L118 145 C132 146 150 160 152 200 Z" fill="url(#jacketGrad)" />
+              <!-- 자켓 라펠 라인 -->
+              <path d="M82 145 L97 186 L78 200" stroke="#2B6CB0" stroke-width="2" fill="none" stroke-linecap="round" />
+              <path d="M118 145 L103 186 L122 200" stroke="#2B6CB0" stroke-width="2" fill="none" stroke-linecap="round" />
+            </g>
+
+            <!-- 얼굴 형태 및 이목구비 -->
+            <g class="head">
+              <!-- 귀 -->
+              <ellipse cx="61" cy="106" rx="7" ry="10" fill="#FFE2D3" />
+              <ellipse cx="139" cy="106" rx="7" ry="10" fill="#FFE2D3" />
+              <!-- 우아한 로즈골드 펄 이어링 포인트 -->
+              <circle cx="61" cy="113" r="3.2" fill="#FDE047" />
+              <circle cx="61" cy="113" r="1.8" fill="#FFFBEB" />
+              <circle cx="139" cy="113" r="3.2" fill="#FDE047" />
+              <circle cx="139" cy="113" r="1.8" fill="#FFFBEB" />
+
+              <!-- 화사하고 갸름한 계란형 얼굴 윤곽 -->
+              <path d="M64 94 C64 64 80 58 100 58 C120 58 136 64 136 94 C136 127 121 144 100 144 C79 144 64 127 64 94 Z" fill="url(#skinGrad)" />
+
+              <!-- 생기 넘치는 핑크 코랄 볼터치 (화사한 치크) -->
+              <ellipse cx="73" cy="112" rx="8" ry="4.5" fill="#FF8CA3" opacity="0.68" />
+              <ellipse cx="127" cy="112" rx="8" ry="4.5" fill="#FF8CA3" opacity="0.68" />
+              <circle cx="71" cy="111" r="1.2" fill="#FFFFFF" opacity="0.75" />
+              <circle cx="129" cy="111" r="1.2" fill="#FFFFFF" opacity="0.75" />
+
+              <!-- 자연스럽고 정돈된 아치형 브라운 눈썹 -->
+              <path d="M72 85 Q82 81 92 86" stroke="#4A372E" stroke-width="2.5" stroke-linecap="round" fill="none" />
+              <path d="M128 85 Q118 81 108 86" stroke="#4A372E" stroke-width="2.5" stroke-linecap="round" fill="none" />
+
+              <!-- 눈 영역 (초롱초롱하고 또렷한 눈매 & 시선 추적 인터랙션) -->
+              <g class="eyes-container" id="characterEyes">
+                <!-- 왼쪽 눈 -->
+                <g class="eye left-eye" transform="translate(82, 101)">
+                  <!-- 화사한 눈 흰자 -->
+                  <ellipse class="eye-white" cx="0" cy="0" rx="7.8" ry="8.2" fill="#FFFFFF" />
+                  <!-- 움직이는 눈동자 그룹 (동공 + 하이라이트 글린트) -->
+                  <g class="pupil-group" id="leftPupil">
+                    <ellipse class="eye-pupil" cx="0" cy="0" rx="4.8" ry="5.2" fill="#242B38" />
+                    <!-- 초롱초롱한 눈망울 하이라이트 글린트 3개 -->
+                    <circle class="eye-glint" cx="-1.8" cy="-2.2" r="1.8" fill="#FFFFFF" />
+                    <circle class="eye-glint-sub" cx="2" cy="1.8" r="1.1" fill="#FFFFFF" />
+                    <circle class="eye-glint-extra" cx="-1.5" cy="2.2" r="0.7" fill="#FFFFFF" opacity="0.8" />
+                  </g>
+                  <!-- 매력적인 아이라인 & 속눈썹 -->
+                  <path d="M-8.5 -1 Q0 -8 8.5 -1.5" stroke="#1E293B" stroke-width="2.6" stroke-linecap="round" fill="none" />
+                  <path d="M7 -2.5 L10 -5.5" stroke="#1E293B" stroke-width="1.8" stroke-linecap="round" />
+                  <path d="M8.5 -1 L10.5 -2.5" stroke="#1E293B" stroke-width="1.5" stroke-linecap="round" />
+                  <!-- 은은한 애교살 라인 -->
+                  <path d="M-6 8 Q0 10.5 6 8" stroke="#F87171" stroke-width="1.2" opacity="0.35" fill="none" stroke-linecap="round" />
+                </g>
+
+                <!-- 오른쪽 눈 -->
+                <g class="eye right-eye" transform="translate(118, 101)">
+                  <!-- 화사한 눈 흰자 -->
+                  <ellipse class="eye-white" cx="0" cy="0" rx="7.8" ry="8.2" fill="#FFFFFF" />
+                  <!-- 움직이는 눈동자 그룹 (동공 + 하이라이트 글린트) -->
+                  <g class="pupil-group" id="rightPupil">
+                    <ellipse class="eye-pupil" cx="0" cy="0" rx="4.8" ry="5.2" fill="#242B38" />
+                    <!-- 초롱초롱한 눈망울 하이라이트 글린트 3개 -->
+                    <circle class="eye-glint" cx="-1.8" cy="-2.2" r="1.8" fill="#FFFFFF" />
+                    <circle class="eye-glint-sub" cx="2" cy="1.8" r="1.1" fill="#FFFFFF" />
+                    <circle class="eye-glint-extra" cx="-1.5" cy="2.2" r="0.7" fill="#FFFFFF" opacity="0.8" />
+                  </g>
+                  <!-- 매력적인 아이라인 & 속눈썹 -->
+                  <path d="M-8.5 -1.5 Q0 -8 8.5 -1" stroke="#1E293B" stroke-width="2.6" stroke-linecap="round" fill="none" />
+                  <path d="M-7 -2.5 L-10 -5.5" stroke="#1E293B" stroke-width="1.8" stroke-linecap="round" />
+                  <path d="M-8.5 -1 L-10.5 -2.5" stroke="#1E293B" stroke-width="1.5" stroke-linecap="round" />
+                  <!-- 은은한 애교살 라인 -->
+                  <path d="M-6 8 Q0 10.5 6 8" stroke="#F87171" stroke-width="1.2" opacity="0.35" fill="none" stroke-linecap="round" />
+                </g>
+              </g>
+
+              <!-- 작고 오똑한 코 -->
+              <path d="M99 107 Q100 111 103 111" stroke="#E59879" stroke-width="1.8" stroke-linecap="round" fill="none" />
+
+              <!-- 화사하고 촉촉한 코랄 핑크 미소 입술 -->
+              <g class="lips">
+                <!-- 윗입술 -->
+                <path d="M91 122 Q100 126 109 122 Q100 120 91 122 Z" fill="url(#lipGrad)" />
+                <!-- 웃는 입 라인 -->
+                <path d="M90 121 Q100 131 110 121" stroke="#BE123C" stroke-width="2.2" stroke-linecap="round" fill="none" />
+                <!-- 아랫입술 (볼륨감) -->
+                <path d="M92 122 Q100 129 108 122 Q100 124 92 122 Z" fill="#FB7185" />
+                <!-- 립글로스 반짝임 하이라이트 -->
+                <ellipse cx="100" cy="125" rx="3.5" ry="1.2" fill="#FFFFFF" opacity="0.75" />
+              </g>
+            </g>
+
+            <!-- 앞머리 없이 시원한 이마를 드러낸 세련된 사이드 가르마 헤어스타일 -->
+            <g class="front-hair-no-bangs">
+              <!-- 탑 볼륨 라인 -->
+              <path d="M58 85 C57 42 76 34 100 34 C125 34 143 42 142 85 C136 68 122 55 98 56 C74 57 63 68 58 85 Z" fill="url(#hairGrad)" />
+              
+              <!-- 자연스럽게 옆으로 넘긴 우아한 왼쪽 앞머리 라인 (이마가 환하게 드러남) -->
+              <path d="M95 56 C80 58 66 70 64 92 C63 105 65 125 68 136 C64 122 60 102 61 86 C62 68 76 57 95 56 Z" fill="url(#hairGrad)" />
+              
+              <!-- 자연스럽게 귀 뒤로 넘긴 오른쪽 앞머리 라인 -->
+              <path d="M102 56 C118 58 132 70 136 90 C138 102 136 122 132 136 C136 122 140 102 139 86 C138 68 124 57 102 56 Z" fill="url(#hairGrad)" />
+              
+              <!-- 헤어 윤기 하이라이트 곡선 -->
+              <path d="M72 46 C80 41 90 40 98 40" stroke="#78594D" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.7" />
+              <path d="M105 40 C114 40 124 43 129 48" stroke="#78594D" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.7" />
+
+              <!-- 귀 옆 자연스러운 애교머리 (소프트 사이드 번) -->
+              <path d="M64 98 C66 108 67 118 69 124 C67 118 65 110 64 98 Z" fill="#2B1D17" />
+              <path d="M136 98 C134 108 133 118 131 124 C133 118 135 110 136 98 Z" fill="#2B1D17" />
+            </g>
+          </svg>
+        </div>
+        <div class="interactive-hint">
+          <i class="fa-regular fa-eye"></i> 마우스를 따라 시선이 움직여요!
+        </div>
+      </div>
+
+      <!-- 명함 프로필 인적사항 정보 -->
+      <div class="profile-info">
+        <h1 class="name">박규리 <span class="name-en">Gyuri Park</span></h1>
+        
+        <div class="role-badge">
+          <i class="fa-solid fa-graduation-cap"></i>
+          <span>글로벌경영학과</span>
+          <span class="role-sub">Global Business Administration</span>
+        </div>
+
+        <!-- 한 줄 소개 -->
+        <p class="bio">
+          "글로벌 비전과 전략적 마인드로 가치를 창출하는 비즈니스 인재입니다."
+        </p>
+
+        <!-- 역량 / 관심 키워드 태그 -->
+        <div class="tag-cloud">
+          <span class="tag">#GlobalStrategy</span>
+          <span class="tag">#Marketing</span>
+          <span class="tag">#CrossCultural</span>
+          <span class="tag">#Innovation</span>
+        </div>
+      </div>
+
+      <!-- 연락처 & 이메일 섹션 -->
+      <div class="contact-section">
+        <!-- 이메일 카드 (복사 기능 내장) -->
+        <div class="email-card" id="emailCopyCard" title="클릭하여 이메일 주소 복사하기">
+          <div class="email-icon">
+            <i class="fa-solid fa-envelope"></i>
+          </div>
+          <div class="email-text-group">
+            <span class="email-label">E-MAIL ADDRESS</span>
+            <span class="email-value" id="emailText">gouli3338@naver.com</span>
+          </div>
+          <button class="copy-action-btn" aria-label="이메일 복사">
+            <i class="fa-regular fa-copy"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- 주요 인터랙션 액션 버튼들 -->
+      <div class="actions-grid">
+        <a href="mailto:gouli3338@naver.com" class="action-btn primary-btn">
+          <i class="fa-solid fa-paper-plane"></i>
+          <span>메일 보내기</span>
+        </a>
+        <button id="vcardBtn" class="action-btn secondary-btn">
+          <i class="fa-solid fa-address-card"></i>
+          <span>연락처 저장</span>
+        </button>
+        <button id="shareBtn" class="action-btn secondary-btn">
+          <i class="fa-solid fa-arrow-up-from-bracket"></i>
+          <span>명함 공유</span>
+        </button>
+      </div>
+
+      <!-- 카드 하단 푸터 -->
+      <div class="card-footer">
+        <p>© 2026 Gyuri Park. All rights reserved.</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- QR 코드 모달 -->
+  <div class="modal-overlay" id="qrModal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3><i class="fa-solid fa-qrcode"></i> 모바일 명함 스캔</h3>
+        <button class="close-modal" id="closeQrModal" aria-label="닫기">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div id="qrcode"></div>
+        <p class="modal-instruction">스마트폰 카메라로 스캔하면<br>명함을 바로 열람할 수 있습니다.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 토스트 알림 메시지 -->
+  <div class="toast" id="toast">
+    <i class="fa-solid fa-circle-check"></i>
+    <span id="toastMsg">이메일 주소가 클립보드에 복사되었습니다!</span>
+  </div>
+
+  <!-- 자바스크립트 -->
+  <script src="script.js"></script>
+</body>
+</html>
+
